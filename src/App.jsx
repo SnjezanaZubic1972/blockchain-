@@ -172,7 +172,7 @@ function App() {
                   <th>Actions</th>
                 </tr>
               </thead>
-                    <tbody>
+                  <tbody>
                   {inventory.map((item) => (
                     <tr key={item.productName}>
                       <td>{item.productName}</td>

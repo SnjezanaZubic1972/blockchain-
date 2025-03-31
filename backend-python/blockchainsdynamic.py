@@ -57,9 +57,9 @@ def get_genesis_data(id):
 def add_inventory_item():
 
     try:
-         # Parse the JSON data from the request
+          # Parse the JSON data from the request
           data = request.get_json()
-           # Extract necessary fields 
+          # Extract necessary fields 
           product_name = data.get('productName') 
           name_customer = data.get('nameCustomer') 
           count = data.get('count') 
@@ -130,6 +130,22 @@ class Blockchain:
         new_timestamp = date.datetime.now()
         new_block = Block(new_index, new_timestamp, data, self.get_latest_block().hash)
         self.chain.append(new_block)
+
+
+
+    def proof_of_work(self, previous_proof):
+        new_proof = 1
+        check_proof = False
+        while check_proof is False:
+            hash__operation = hashlib.sha256(str(new_proof**2-previous_proof**2)).encode().hexdigest();
+            if hash__operation[:4] == '0000':
+                
+                check_proof == True
+            else:
+                new_proof += 1
+        return new_proof
+
+
 
 
     def is_valid(self):
